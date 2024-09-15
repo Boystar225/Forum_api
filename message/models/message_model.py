@@ -1,10 +1,10 @@
 from django.db import models
-from sujet.models.sujet_model import SujetModel
+from base.models.helpers.date_time_model import DateTimeModel
 
-class MessageModel(models.Model):
-    topic = models.ForeignKey(SujetModel, related_name='messages', on_delete=models.CASCADE)
+
+class MessageModel(DateTimeModel):
+    topic = models.ForeignKey('topic.TopicModel', related_name='message_topic_ids', on_delete=models.CASCADE)
     content = models.TextField()
-    creation_date = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return f"Message de {self.topic.title}"

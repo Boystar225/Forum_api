@@ -1,16 +1,15 @@
 from django.urls import path, include
 from rest_framework import routers
-from .viewsets.forum_viewset import ForumViewset
-from .viewsets.message_viewset import MessageViewSet
-from .viewsets.sujet_viewset import SujetViewSet
+from .viewsets import forum_viewset, message_viewset, topic_viewset
 
-routers = routers.DefaultRouter()
-routers.register(r'forums', ForumViewset, basename="forums")
-routers.register(r'sujets', SujetViewSet, basename="sujets")
-routers.register(r'messages', MessageViewSet, basename="messages")
+
+router = routers.DefaultRouter()
+router.register(r'forums', forum_viewset.ForumViewset, basename="forums")
+router.register(r'topics', topic_viewset.TopicViewSet, basename="topics")
+router.register(r'messages', message_viewset.MessageViewSet, basename="messages")
 
 app_name ='api'
 
 urlpatterns = [
-    path('', include(routers.urls)),
+    path('', include(router.urls)),
 ]

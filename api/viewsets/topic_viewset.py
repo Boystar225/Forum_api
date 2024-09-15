@@ -1,14 +1,19 @@
-from ..serializers.forum_serializer import ForumSerializer, ForumDetailSerializer
 from rest_framework import viewsets
-from forum.models.forum_model import ForumModel
+from topic.models.topic_model import TopicModel
+from ..serializers.topic_serializer import TopicSerializer, TopicDetailSerializer
 from rest_framework.exceptions import MethodNotAllowed
 
+class TopicViewSet(viewsets.ModelViewSet):
+    serializer_class= TopicSerializer
+    detail_serializer_class = TopicDetailSerializer
 
-class ForumViewset(viewsets.ModelViewSet):
-    serializer_class =ForumSerializer
-    detail_serializer_class = ForumDetailSerializer
-    queryset = ForumModel.objects.filter(status=True)
-
+    def get_queryset(self):
+        queryset = TopicModel.objects.filter(status=True)
+        forum_id = self.request.GET.get('forum_id')
+        if forum_id is not None:
+            queryset = queryset.filter(forum_id=forum_id)
+        return queryset
+    
     def get_serializer_class(self):
         if self.action == 'retrieve':
             return self.detail_serializer_class

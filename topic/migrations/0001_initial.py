@@ -9,19 +9,19 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('topic', '0001_initial'),
+        ('forum', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='MessageModel',
+            name='TopicModel',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('status', models.BooleanField(default=True)),
-                ('content', models.TextField()),
-                ('topic', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='message_topic_ids', to='topic.topicmodel')),
+                ('title', models.CharField(max_length=255)),
+                ('forum', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='topic_forum_ids', to='forum.forummodel')),
             ],
             options={
                 'abstract': False,

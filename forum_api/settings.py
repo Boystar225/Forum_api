@@ -37,14 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    #Applications Installées
-    
+
+    # Installed packages
     'rest_framework',
+    
+    #Custom apps
     'api.apps.ApiConfig',
     'forum.apps.ForumConfig', 
     'message.apps.MessageConfig',
-    'sujet.apps.SujetConfig',
+    'topic.apps.TopicConfig',
+    'base.apps.BaseConfig',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'forum_db',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'ivan',
         'HOST': 'localhost',
         'PORT': '5432',
         
