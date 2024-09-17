@@ -4,14 +4,16 @@ Développement d'une API REST pour la gestion d'un forum avec Django
 ## Les étapes d'installation de l'application :
 - Ouvrer un terminal puis cloner le lien github de l'application : git clone https://github.com/Boystar225/Forum_api.git
 - Créer un environnement virtuel dans le repertoire ( python ou python3 pour Unix -m venv venv ou env)
-- Naviguer vers le fichier activate.bat soit dans scripts ou bin, puis activer l'environnement (source activate ou activate pour windows)
-- Revener au repertoire de votre projet puis installer les dépendances de l'application à partir du fichier requirements.txt (pip ou pip3 install -r requirements.txt)
+- Naviguer vers le fichier activate.bat soit dans scripts ou bin, puis activer l'environnement (source activate pour Unix ou activate pour windows)
+- Revener au repertoire de votre projet puis installer les dépendances de l'application à partir du fichier requirements.txt (pip ou pip3 pour Unix install -r requirements.txt)
 - Installez et configurez une base de données Postgresql 'forum_db' configurer les accès dans le fichier settings.py
-- Naviguez vers le repertoire source (src) puis créer et appliquer les migrations : python manage.py makemigrations ensuite python manage.py migrate
+- Naviguez vers le repertoire source (Forum_api) puis créer et appliquer les migrations : python manage.py makemigrations ensuite python manage.py migrate
   
 ## Les instructions de démarrage :
-- Naviguez vers le repertoire source (src) puis lancer le server : python manage.py runserver, vous pouvez preciser le port python manage.py runserver numeros_port ( exple : python manage.py runserver 7879)
+- Naviguez vers le repertoire source (Forum_api) puis lancer le server : python manage.py runserver, vous pouvez preciser le port python manage.py runserver numeros_port ( exple : python manage.py runserver 7879)
 - Vous pouvez tester avec le navigateur ou avec Postman 
+- Lien vers l'api : http://127.0.0.1:8000/api/
+- Lien vers la documentation : https://documenter.getpostman.com/view/34266096/2sAXqpAjui
   
 ## Description des fonctionnalités principales de l'application :
 

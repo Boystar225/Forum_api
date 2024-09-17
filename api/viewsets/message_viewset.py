@@ -1,10 +1,9 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from message.models.message_model import MessageModel
 from ..serializers.message_serializer import MessageSerializer
-from rest_framework.exceptions import MethodNotAllowed
 
 
-class MessageViewSet(viewsets.ModelViewSet):
+class MessageViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, viewsets.GenericViewSet):
     
     serializer_class = MessageSerializer
 
@@ -14,14 +13,4 @@ class MessageViewSet(viewsets.ModelViewSet):
         if topic_id is not None:
             queryset = queryset.filter(topic_id=topic_id)
         return queryset
-    
-    
-    def destroy(self, request, *args, **kwargs):
-        raise MethodNotAllowed("DELETE",detail="Suppression non autorisée.")
-    
-    def update(self, request, *args, **kwargs):
-        raise MethodNotAllowed("PUT", detail="Modification complète non autorisée.")
-    
-    def partial_update(self, request, *args, **kwargs):
-        raise MethodNotAllowed("PATCH", detail="Modification partielle non autorisée.")
     
